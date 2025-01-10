@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const API_URL = 'https://vacantes-api.vercel.app';
 
