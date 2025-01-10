@@ -20,11 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Función para mostrar los cursos
-  async function mostrarCursos(cursos) {
+  async function mostrarCursos(cursos: any[]) {
     // Ordenar alfabéticamente por sigla
     cursos.sort((a, b) => a.sigla.localeCompare(b.sigla));
 
     // Limpiar la lista
+    if (!cursosList) {
+      throw new Error('Elemento cursos-list no encontrado');
+    }
     cursosList.innerHTML = '';
 
     // Mostrar los cursos en la lista
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Función para obtener las vacantes de una sección por NRC
-  async function fetchVacantes(nrc) {
+  async function fetchVacantes(nrc: string) {
     try {
       const response = await fetch(`${API_URL}/cursos/${nrc}`);
       if (!response.ok) {
